@@ -1,0 +1,213 @@
+<div class="header">
+  <app-patientheader></app-patientheader>
+</div> 
+
+<div class="container">
+ 
+  <div class="main-container">
+    <div class="side-nav vh-100">
+      <app-side-nav></app-side-nav>
+    </div>
+    <div class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="card card1 m-4">
+              <div class="card-header py-3">
+                <h5 class="mx-3 listtext">Patient Details </h5>
+              </div>
+              <div class="card-body">
+                 <form #r = ngForm >
+                  <div class="row mb-4">
+                    <div class="col mx-2">
+                       
+                        <label class="form-label" for="form6Example1">First name</label>
+                        <input type="text" required minlength="4" ngModel class="form-control" name="fristName" [(ngModel)]="selectedPatient.firstName" >
+                        <div *ngIf="r.controls['fristName']?.['touched'] && r.controls['fristName']?.['errors'] ">
+                          <div class="error" *ngIf="r.controls['fristName']?.['errors']?.['required']">fristname is required </div>
+                        </div>                   
+                    
+                    </div>
+                    <div class="col mx-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example2">Last name</label>
+                        <input type="text" required id="form6Example2" name="lastName" ngModel class="form-control" [(ngModel)]="selectedPatient.lastName"  />
+                        <div *ngIf="r.controls['lastName']?.['touched'] && r.controls['lastName']?.['errors'] ">
+                          <div  class="error" *ngIf="r.controls['lastName']?.['errors']?.['required']">lastname is required </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col mx-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example3">phone number</label>
+                        <input type="tel" required id="form6Example3" class="form-control" ngModel name="phoneNumber" [(ngModel)]="selectedPatient.phoneNumber" />
+                        <div *ngIf="r.controls['phoneNumber']?.['touched'] && r.controls['phoneNumber']?.['errors'] ">
+                          <div class="error" *ngIf="r.controls['phoneNumber']?.['errors']?.['required']">phoneNumber is required </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col mx-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example4">Email</label>
+                        <input type="email" required email id="form6Example4" class="form-control" ngModel name="email" [(ngModel)]="selectedPatient.email" />
+                        <div *ngIf="r.controls['email']?.['touched'] && r.controls['email']?.['errors'] " class="invalid">
+                          <div class="error" *ngIf="r.controls['email']?.['errors']?.['required']">email is required </div>
+                          <div  class="error" *ngIf="r.controls['email']?.['errors']?.['email']">invalid email </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col mx-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example5">Adderes line 1</label>
+                        <input type="text" required id="form6Example5" class="form-control" ngModel name="address" [(ngModel)]="selectedPatient.address"  />
+                        <div *ngIf="r.controls['address']?.['touched'] && r.controls['address']?.['errors'] ">
+                          <div class="error" *ngIf="r.controls['address']?.['errors']?.['required']">address is required </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col mx-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example6">Adderes line 2</label>
+                        <input type="text" required id="form6Example6" class="form-control" ngModel name="address2" [(ngModel)]="selectedPatient.address2" />
+                        <div *ngIf="r.controls['address2']?.['touched'] && r.controls['address2']?.['errors'] ">
+                          <div class="error" *ngIf="r.controls['address2']?.['errors']?.['required']">address2 is required </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col mx-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example7">city</label>
+                        <input type="text" required id="form6Example7" class="form-control" ngModel name="city" [(ngModel)]="selectedPatient.city" />
+                        <div *ngIf="r.controls['city']?.['touched'] && r.controls['city']?.['errors'] ">
+                          <div class="error" *ngIf="r.controls['city']?.['errors']?.['required']">city is required </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col mx-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example8">state</label>
+                        <input type="text" required id="form6Example8" class="form-control" ngModel name="state" [(ngModel)]="selectedPatient.state" />
+                        <div *ngIf="r.controls['state']?.['touched'] && r.controls['state']?.['errors'] ">
+                          <div class="error" *ngIf="r.controls['state']?.['errors']?.['required']">state is required </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col mx-2">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example9">zipcode</label>
+                        <input type="number" required id="form6Example9" class="form-control" ngModel name="zipcode" [(ngModel)]="selectedPatient.zipcode" />
+                        <div *ngIf="r.controls['zipcode']?.['touched'] && r.controls['zipcode']?.['errors'] ">
+                          <div class="error" *ngIf="r.controls['zipcode']?.['errors']?.['required']">zipcode is required </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   
+                  <button class="add m-3" [disabled]="r.invalid" (click)="addPatient(r)">{{addUpdateLabel}}</button>
+                 </form>
+                 
+ 
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="card card1 m-4">
+              <div class="card-header d-flex justify-content-between py-3">
+                <h5 class="mx-3 listtext">Patient List </h5>
+                
+                <input type="text"   class="search mx-3 " placeholder="Search by First Name" [(ngModel)]="searchText">
+              </div>
+              <div class="card-body">
+ 
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th class="th" scope="col">firstName</th>
+                      <th class="th" scope="col">lastName</th>
+                      <th class="th" scope="col">address</th>
+                      <th class="th" scope="col">action</th>
+                    </tr>
+                    <tr *ngFor="let patient of patientList  | search: searchText ">
+                      <td class="td">{{ patient.firstName }}</td>
+                      <td class="td">{{ patient.lastName }}</td>
+                      <td class="td">{{ patient.address }}</td>
+                      <td>
+                        <button class="btn btn-primary padd " (click)="editPatient(patient)">Edit</button>
+                        <button class="btn btn-primary padd" (click)="openPopup()">View</button>
+                        <button class="btn btn-primary padd" (click)="deletePatient(patient.patientID)">Delete</button> 
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+                 
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+ 
+ 
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Patient Details</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th class="th" scope="col">FirstName</th>
+              <th class="th" scope="col">LastName</th>
+              <th class="th" scope="col">phoneNumber</th>
+              <th class="th" scope="col">Email</th>
+              <th class="th" scope="col">address1</th>
+              <th class="th" scope="col">address2</th>
+              <th class="th" scope="col">city</th>
+              <th class="th" scope="col">state</th>
+              <th class="th" scope="col">zipcode</th>
+            </tr>
+            <tr *ngFor="let patient of patientList  | search: searchText ">
+              <td class="td">{{ patient.firstName }}</td>
+              <td class="td">{{ patient.lastName }}</td>
+              <td class="td">{{ patient.phoneNumber }}</td>
+              <td class="td">{{ patient.email }}</td>
+              <td class="td">{{ patient.address }}</td>
+              <td class="td">{{ patient.address2 }}</td>
+              <td class="td">{{ patient.city }}</td>
+              <td class="td">{{ patient.state }}</td>
+              <td class="td">{{ patient.zipcode }}</td>
+            </tr>
+          </thead>
+        </table>
+       
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ 

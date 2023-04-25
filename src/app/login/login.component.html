@@ -1,0 +1,39 @@
+ 
+<div class="container">
+  <div class="row vh-100 align-items-center justify-content-center ">
+    <div class="col-sm-8 col-md-6 col-lg-4 bg-white rouned  shadow">
+      <div class="row justify-content-center align-items-center imgpati mb-4">
+        <img class="patientimg" src="..\assets\patient12.png" alt="">
+      </div>
+      <form   #f = ngForm >
+        <div class="mb-4 loginheading">Login into your Account</div>
+        <div class="mb-4">
+          <input type="email" required email name="email" ngModel class="form-control text" id="email" aria-describedby="emailHelp" placeholder="Email Address">
+           <div *ngIf="f.controls['email']?.['touched'] && f.controls['email']?.['errors'] ">
+              <div class="error" *ngIf="f.controls['email']?.['errors']?.['required']">email is required </div>
+              <div  class="error" *ngIf="f.controls['email']?.['errors']?.['email']">invalid email </div>
+           </div>
+        </div>
+        <div class="mb-4">
+          <input type="password" required ngModel name="password" minlength="8" class="form-control text" id="email"  placeholder="Password">
+          <div *ngIf="f.controls['password']?.['touched'] && f.controls['password']?.['errors'] " class="invalid">
+            <div class="error" *ngIf="f.controls['password']?.['errors']?.['required']">password is required </div>
+            <div  class="error" *ngIf="f.controls['password']?.['errors']?.['minlength']">minimum 8 characters</div>
+         </div>
+        </div>
+        <div class="mb-4 form-check">
+          <input type="checkbox" class="form-check-input" id="remember">
+          <label for="remember" class="form-check-label text">Remember me</label>
+        </div>
+        <div>
+          <button type="submit" [disabled]="f.invalid" class="btn w-100 loginbtn"><a class="logintext"  routerLink="/patient">Login</a></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+ 
+ 
+
+
+ 
